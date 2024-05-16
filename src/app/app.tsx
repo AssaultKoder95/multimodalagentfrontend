@@ -8,21 +8,20 @@ import {
   CommandLineIcon,
   PlayIcon,
   SpeakerWaveIcon,
-  ArrowPathIcon,
-  ForwardIcon
 } from '@heroicons/react/24/outline'
-import { PlayCircleIcon } from '@heroicons/react/24/solid'
+import {
+  PlayCircleIcon, ArrowPathIcon,
+  ForwardIcon
+} from '@heroicons/react/24/solid'
+import { useState } from 'react'
 
-// import Button from 'components/atoms/button'
-// import Logos from 'components/atoms/logos'
-// import CopyButton from 'components/molecules/copy-button'
 import Card from 'components/organisms/card'
 import styles from './app.module.css'
 
-const CONSTANTS = {
-  name: 'Abhishek Khanna',
-  githubProfileLink: 'https://github.com/assaultkoder95',
-}
+// const CONSTANTS = {
+//   name: 'Abhishek Khanna',
+//   githubProfileLink: 'https://github.com/assaultkoder95',
+// }
 
 const prompts = [
   {
@@ -51,100 +50,126 @@ const prompts = [
 
 const steps = [
   {
-    name: 'Type in a query ',
+    name: '',
     description:
-      'or choose one of the examples on the chat interface to get started',
+      'Type in a query or choose one of the examples on the chat interface to get started',
     logo: CommandLineIcon,
   },
   {
-    name: 'We support some websites that require authentication in which case a login button will appear',
-    description: '',
+    name: '',
+    description: 'We support some websites that require authentication in which case a login button will appear',
     logo: KeyIcon,
   },
   {
-    name: 'You may interact with the screen to take over control or correct the agent',
+    name: '',
     description:
-      'in San hose for 2 people using OpenTable',
+      'You may interact with the screen to take over control or correct the agent',
     logo: PencilSquareIcon,
   },
 ];
 
-
 const App = (): JSX.Element => {
+  const [iframeState, updateIframeState] = useState(false);
+
+  const openIframeHandler = () => {
+    updateIframeState(state => !state);
+  }
+
   return (
     <main className={styles.main}>
-      <header className={styles.header}>
+      {/* <header className={styles.header}>
         <h3 className={styles.headerTopTitle}>
           <span className={styles.headerTopTitleVital}>Multi Modal Web Agent</span> @ Chima
         </h3>
-      </header>
+      </header> */}
       <section className={styles.layout}>
         <section className={styles.prompts}>
           {prompts.map((props, index) => (
             <div
               key={index}
               className={styles.cardWrapper}
-              style={{ animationDelay: `${index * 0.1 + 0.1}s` }}
+              style={{ animationDelay: `${index * 0.1 + 0.1}s`, height: 0 }}
             >
               <Card
                 title={props.name}
                 description={props.description}
                 Icon={props.logo}
-                type='feature'
+                type="feature"
               />
             </div>
           ))}
+          <div className={styles.searchForm}>
+            <input
+              type="text"
+              name="price"
+              id="price"
+              className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              placeholder="Write a command..."
+              style={{ background: '#f1f1f1', marginBottom: '10px' }}
+            />
+            <div className="absolute inset-y-0 right-0 flex items-center">
+              <SpeakerWaveIcon />
+            </div>
+
+            <div className="grid grid-cols-3 divide-x">
+              <span className="text-center">
+                <ArrowPathIcon className={styles.icon} aria-hidden="true" />
+                Start Over
+              </span>
+              <span>
+                <PlayCircleIcon
+                  className={styles.icon}
+                  style={{ color: '#3c82f6', height: '3rem', width: '3rem' }}
+                  aria-hidden="true"
+                  onClick={openIframeHandler}
+                />
+              </span>
+              <span className="text-center">
+                <ForwardIcon className={styles.icon} aria-hidden="true" />
+                Step
+              </span>
+            </div>
+          </div>
         </section>
         <section className={styles.frame}>
-          <div style={{ textAlign: 'center' }}>
-            <PlayIcon className={styles.icon} aria-hidden="true" />
-            <h2> Playground </h2>
-            <p> Your live preview will start here. To get started: </p>
-          </div>
-
-          {steps.map((props, index) => (
-            <div
-              key={index}
-              className={styles.cardWrapper}
-              style={{ animationDelay: `${index * 0.1 + 0.1}s`, textAlign: 'left' }}
-            >
-              <Card
-                title={props.name}
-                description={props.description}
-                Icon={props.logo}
-                type='listing'
-              />
+          {!iframeState && <div>
+            <div style={{ textAlign: 'center', color: '#c2c2c2' }}>
+              <PlayIcon className={styles.icon} aria-hidden="true" style={{ color: '#c2c2c2', height: '2rem', width: '2rem' }} />
+              <h1 style={{ fontSize: '2rem' }}> Playground </h1>
+              <p style={{ fontWeight: 500, marginBottom: 25 }}> Your live preview will start here. To get started: </p>
             </div>
-          ))}
+            <div className={styles.stepsWrapper}>
+              {steps.map((props, index) => (
+                <div
+                  key={index}
+                  className={styles.cardWrapper}
+                  style={{
+                    animationDelay: `${index * 0.1 + 0.1}s`,
+                    textAlign: 'left',
+                  }}
+                >
+                  <Card
+                    title={props.name}
+                    description={props.description}
+                    Icon={props.logo}
+                    type="listing"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>}
+
+          {iframeState && <div>
+            <iframe src='https://multimodal-web-agent-bice.vercel.app/' title='Multi Modal Web Agent' width='100%' height='100%'></iframe>
+          </div>}
         </section>
       </section>
 
-      <section className={styles.searchForm}>
-        <input type="text" name="price" id="price" className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="Type your query..." />
-        <div className="absolute inset-y-0 right-0 flex items-center">
-          <SpeakerWaveIcon />
-        </div>
-
-        <div className='grid grid-cols-3 divide-x'>
-          <span className='text-center'>
-            <ArrowPathIcon className={styles.icon} aria-hidden="true" />
-            Start Over
-          </span>
-          <span>
-            <PlayCircleIcon className={styles.icon} style={{ color: '#3c82f6' }} aria-hidden="true" />
-          </span>
-          <span className='text-center'>
-            <ForwardIcon className={styles.icon} aria-hidden="true" />
-            Step
-          </span>
-        </div>
-      </section>
-
-      <footer className={styles.footer}>
+      {/* <footer className={styles.footer}>
         <a href={CONSTANTS.githubProfileLink} target="_blank" rel="noreferrer">
           {CONSTANTS.name} @ {new Date().getFullYear()}
         </a>
-      </footer>
+      </footer> */}
     </main>
   )
 }

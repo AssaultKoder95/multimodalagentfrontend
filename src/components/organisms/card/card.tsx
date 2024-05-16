@@ -16,12 +16,12 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
       <div ref={ref} className={type === 'listing' ? styles.listing_card : styles.feature_card} {...rest}>
         <div>
           <span className={styles.iconContainer}>
-            <Icon className={styles.icon} aria-hidden="true" />
+            <Icon className={type === 'listing' ? styles.listing_icon : styles.feature_icon} aria-hidden="true" />
           </span>
         </div>
         <div className={styles.content}>
           <h3 className={styles.title}>{title}</h3>
-          <p className={styles.description}>{description}</p>
+          <p className={type === 'listing' ? styles.listing_desc : styles.feature_desc}>{description}</p>
         </div>
       </div>
     )

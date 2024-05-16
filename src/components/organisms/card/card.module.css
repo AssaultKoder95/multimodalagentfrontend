@@ -1,11 +1,11 @@
 .feature_card {
-  @apply relative h-full overflow-hidden rounded-md p-4 shadow;
+  @apply relative overflow-hidden rounded-md p-4 shadow;
   background: #f4f4f4;
 }
 
 .listing_card {
   @apply relative h-full overflow-hidden rounded-md bg-transparent bg-opacity-5 p-4 shadow;
-  
+  border: 1px solid #f1f1f1;
 }
 
 .content {
@@ -13,17 +13,46 @@
 }
 
 .title {
-  @apply text-gray-600 text-xl font-bold;
+  font-size: 0.75rem;
+  line-height: 0.75rem;
+  font-weight: 700;
+  --tw-text-opacity: 1;
+  color: #303030;
 }
 
-.description {
-  @apply flex-1 text-base text-gray-400;
+.feature_desc {
+  font-size: 0.7rem;
+  line-height: 1.5rem;
+  font-weight: 600;
+  --tw-text-opacity: 1;
+  color: #3e3e3e;
 }
+
+.listing_desc {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 600;
+  --tw-text-opacity: 1;
+  color: #c4c4c4;
+}
+
 
 .iconContainer {
-  @apply absolute left-1 top-4 flex items-center justify-center rounded-md opacity-100;
+  left: 1.25rem;
+  top: 1.25rem;
+  @apply absolute flex items-center justify-center rounded-md opacity-100;
 }
 
-.icon {
-  @apply h-12 w-12 text-gray-700;
+.feature_icon {
+  height: 2rem;
+  width: 2rem;
+  --tw-text-opacity: 1;
+  color: #000000;
+}
+
+.listing_icon {
+  height: 1.5rem;
+  width: 1.5rem;
+  --tw-text-opacity: 1;
+  color: #c7c7c7;
 }

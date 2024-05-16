@@ -1,11 +1,12 @@
 .main {
-  @apply min-h-screen w-full space-y-16 bg-black px-4 sm:px-0;
-  background: linear-gradient(to top, #dfe9f3 0%, white 100%);
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
 }
 
-.header {
+/* .header {
   @apply relative z-10 mx-auto max-w-screen-lg pt-16 xl:max-w-screen-xl;
-}
+} */
 
 .headerTopTitle {
   @apply bg-gradient-to-tl from-fuchsia-200 via-cyan-500 to-violet-400 bg-clip-text text-2xl font-bold leading-none tracking-tight text-transparent sm:text-4xl;
@@ -16,7 +17,7 @@
 }
 
 .headerTitle {
-  @apply mb-8 bg-gradient-to-tl from-fuchsia-200 via-cyan-500 to-violet-400  bg-clip-text text-6xl font-extrabold leading-none tracking-tight text-transparent sm:mb-10 lg:text-7xl;
+  @apply mb-8 bg-gradient-to-tl from-fuchsia-200 via-cyan-500 to-violet-400 bg-clip-text text-6xl font-extrabold leading-none tracking-tight text-transparent sm:mb-10 lg:text-7xl;
 }
 
 .headerDescription {
@@ -32,23 +33,36 @@
 }
 
 .searchForm {
-  @apply relative z-10 mx-auto max-w-screen-lg;
+  top: 200px;
+  width: 100%;
+  @apply relative z-10 mx-auto max-w-screen-lg mb-2;
 }
 
 .layout {
-  @apply grid grid-cols-3 divide-x;
-  border: 1px solid black;
+  display: grid;
+  grid-template-columns: 35% 65%;
+  /* Set the width of columns */
+  gap: 0;
+  /* Remove any gap between columns */
   border-radius: 0.5rem;
 }
 
 .prompts {
-  @apply grid grid-cols-3 m-2;
-  background: rgba(255, 255, 255, 0.1);
+  margin: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  position: relative;
+  height: 550px;
+  top: -60px;
 }
 
 .frame {
   @apply flex flex-col;
-  background:#f4f4f4;
+  height: 100vh;
+  background: #f7f7f7;
+  padding: 2rem;
+  justify-content: center;
 }
 
 .cardWrapper {
@@ -62,10 +76,20 @@
   }
 }
 
-.footer {
+/* .footer {
   @apply mx-auto max-w-screen-lg pb-16 text-center font-bold text-gray-400 xl:max-w-screen-xl;
-}
+} */
 
 .icon {
-  @apply mx-auto h-24 w-24 text-gray-700 opacity-100;
+  margin-left: auto;
+  margin-right: auto;
+  height: 1.5rem;
+  width: 1.5rem;
+  --tw-text-opacity: 1;
+  color: #000000;
+  opacity: 1;
+}
+
+.stepsWrapper {
+  padding: 0 10rem;
 }
