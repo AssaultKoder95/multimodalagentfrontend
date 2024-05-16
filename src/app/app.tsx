@@ -160,7 +160,7 @@ const App = (): JSX.Element => {
           </div>}
 
           {iframeState && <div>
-            <iframe src='https://multimodal-web-agent-bice.vercel.app/' title='Multi Modal Web Agent' width='100%' height='100%'></iframe>
+            <iframe src='https://multimodal-web-agent-bice.vercel.app/api/' title='Multi Modal Web Agent' width='100%' height='100%'></iframe>
           </div>}
         </section>
       </section>
