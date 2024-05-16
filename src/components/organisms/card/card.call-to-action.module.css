@@ -1,0 +1,7 @@
+.callToActionContainer {
+  @apply pt-6;
+}
+
+.callToActionElement {
+  @apply font-bold tracking-wide text-white transition hover:text-blue-400;
+}

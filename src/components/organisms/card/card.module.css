@@ -1,0 +1,29 @@
+.feature_card {
+  @apply relative h-full overflow-hidden rounded-md p-4 shadow;
+  background: #f4f4f4;
+}
+
+.listing_card {
+  @apply relative h-full overflow-hidden rounded-md bg-transparent bg-opacity-5 p-4 shadow;
+  
+}
+
+.content {
+  @apply flex h-full flex-col ml-12;
+}
+
+.title {
+  @apply text-gray-600 text-xl font-bold;
+}
+
+.description {
+  @apply flex-1 text-base text-gray-400;
+}
+
+.iconContainer {
+  @apply absolute left-1 top-4 flex items-center justify-center rounded-md opacity-100;
+}
+
+.icon {
+  @apply h-12 w-12 text-gray-700;
+}

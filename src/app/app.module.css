@@ -1,0 +1,71 @@
+.main {
+  @apply min-h-screen w-full space-y-16 bg-black px-4 sm:px-0;
+  background: linear-gradient(to top, #dfe9f3 0%, white 100%);
+}
+
+.header {
+  @apply relative z-10 mx-auto max-w-screen-lg pt-16 xl:max-w-screen-xl;
+}
+
+.headerTopTitle {
+  @apply bg-gradient-to-tl from-fuchsia-200 via-cyan-500 to-violet-400 bg-clip-text text-2xl font-bold leading-none tracking-tight text-transparent sm:text-4xl;
+}
+
+.headerTopTitleVital {
+  @apply text-[orange] opacity-75;
+}
+
+.headerTitle {
+  @apply mb-8 bg-gradient-to-tl from-fuchsia-200 via-cyan-500 to-violet-400  bg-clip-text text-6xl font-extrabold leading-none tracking-tight text-transparent sm:mb-10 lg:text-7xl;
+}
+
+.headerDescription {
+  @apply mb-10 max-w-screen-lg text-lg font-medium text-gray-300 sm:mb-11 sm:text-2xl sm:leading-10;
+}
+
+.headerDescriptionCode {
+  @apply bg-gradient-to-tl from-fuchsia-200 via-cyan-500 to-violet-400 bg-clip-text font-mono font-bold text-transparent;
+}
+
+.copyInner {
+  @apply items-center space-y-4 sm:flex sm:space-x-6 sm:space-y-0;
+}
+
+.searchForm {
+  @apply relative z-10 mx-auto max-w-screen-lg;
+}
+
+.layout {
+  @apply grid grid-cols-3 divide-x;
+  border: 1px solid black;
+  border-radius: 0.5rem;
+}
+
+.prompts {
+  @apply grid grid-cols-3 m-2;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.frame {
+  @apply flex flex-col;
+  background:#f4f4f4;
+}
+
+.cardWrapper {
+  @apply col-span-10 opacity-0 sm:col-span-5 m-2;
+  animation: show 0.5s forwards;
+}
+
+@keyframes show {
+  to {
+    @apply opacity-100;
+  }
+}
+
+.footer {
+  @apply mx-auto max-w-screen-lg pb-16 text-center font-bold text-gray-400 xl:max-w-screen-xl;
+}
+
+.icon {
+  @apply mx-auto h-24 w-24 text-gray-700 opacity-100;
+}
